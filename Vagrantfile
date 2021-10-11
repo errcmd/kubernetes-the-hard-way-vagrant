@@ -5,7 +5,7 @@ Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/focal64"
 
   config.vm.provider "virtualbox" do |vb|
-    vb.memory = "512"
+    vb.memory = "768"
     vb.customize ["modifyvm", :id, "--audio", "none"]
   end
 
@@ -28,7 +28,7 @@ Vagrant.configure("2") do |config|
         c.vm.provision :shell, :path => "scripts/vagrant-setup-hosts-file.bash"
 
         c.vm.provider "virtualbox" do |vb|
-          vb.memory = "750"
+          vb.memory = "1024"
         end
     end
   end

@@ -7,13 +7,12 @@ readonly dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 for i in {0..2}; do
   cat >"${dir}/../config/worker-${i}-10-bridge.conf" <<EOF
 {
-    "cniVersion": "0.3.1",
-    "name": "crio",
+    "cniVersion": "0.4.0",
+    "name": "bridge",
     "type": "bridge",
-    "bridge": "cni0",
+    "bridge": "cnio0",
     "isGateway": true,
     "ipMasq": true,
-    "hairpinMode": true,
     "ipam": {
         "type": "host-local",
         "ranges": [
@@ -21,6 +20,13 @@ for i in {0..2}; do
         ],
         "routes": [{"dst": "0.0.0.0/0"}]
     }
+}
+EOF
+  cat >"${dir}/../config/worker-${i}-99-loopback.conf" <<EOF
+{
+    "cniVersion": "0.4.0",
+    "name": "lo",
+    "type": "loopback"
 }
 EOF
 done

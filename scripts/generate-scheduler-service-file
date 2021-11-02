@@ -12,6 +12,7 @@ Documentation=https://github.com/GoogleCloudPlatform/kubernetes
 
 [Service]
 ExecStart=/usr/local/bin/kube-scheduler \\
+  --feature-gates="ReadWriteOncePod=true" \\
   --leader-elect=true \\
   --kubeconfig=/var/lib/kubernetes/kube-scheduler.kubeconfig \\
   --v=2

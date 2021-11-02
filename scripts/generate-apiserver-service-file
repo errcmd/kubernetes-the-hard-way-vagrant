@@ -12,6 +12,7 @@ Documentation=https://github.com/GoogleCloudPlatform/kubernetes
 
 [Service]
 ExecStart=/usr/local/bin/kube-apiserver \\
+  --feature-gates="ReadWriteOncePod=true" \\
   --advertise-address=192.168.199.1${i} \\
   --allow-privileged=true \\
   --apiserver-count=3 \\
